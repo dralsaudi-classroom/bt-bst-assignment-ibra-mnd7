@@ -19,7 +19,7 @@ public class TreeUser {
     		LinkedStack<BTNode<T>> tmp = new LinkedStack();
     		BTNode<T> tmp2;
 
-    	tmp.push(bt.root);
+    	tmp.push(bt.current);
     	
     	while(!tmp.empty()) {
     		bt.current=tmp.pop();

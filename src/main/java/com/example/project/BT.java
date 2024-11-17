@@ -101,8 +101,11 @@ public class BT<T> {
 	
 	
 	public int countLeaves() {
+		if(root==null) {
+			return 0;
+		}
 		   BTNode<T> p=root;
-		   Stack<BTNode<T>> a= (Stack<BTNode<T>>) new  LinkedList<BTNode<T>>();
+		   LinkedStack<BTNode<T>> a =new LinkedStack<BTNode<T>>();
 		   a.push(p);
 		   int countL=0;
 		 
