@@ -1,26 +1,46 @@
 package com.example.project;
 
+import java.util.Stack;
+
 public class TreeUser {
     public static <T> int countLeaves(BT<T> bt) {
-    	int countL=0;
+    	if(bt.root==null) {
+    		return 0;
+    	}
     	
+    	
+    	bt.current=bt.root;
+    	int counter=0;
     	if(bt.isLeaf()) {
-    		countL++;
+    		return 1;
     	}
     	else
-    		if(bt.find(Relative.LeftChild)) {
-    			countL+= countLeaves(bt);
+    	{
+    		LinkedStack<BTNode<T>> tmp = new LinkedStack();
+    		BTNode<T> tmp2;
+
+    	tmp.push(bt.root);
+    	
+    	while(!tmp.empty()) {
+    		bt.current=tmp.pop();
+    		if(bt.isLeaf()) {
+    			counter++;
     		}
-    	
-    		else
-    		    if(bt.find(Relative.RightChild)){
-    		    	countL+=countLeaves(bt);
+    		
+    		if(bt.current.left!=null) {
+    			tmp.push(bt.current.left);
     		}
-   
-    	return countL;
+    		
+    		if(bt.current.right!=null) {
+    			tmp.push(bt.current.right);
+    		}
+    		
+    		
+    		
+    	}
     	
-    	
-    	
-    	
-    	
-}}
+    	}
+       return counter;
+       
+    }
+}

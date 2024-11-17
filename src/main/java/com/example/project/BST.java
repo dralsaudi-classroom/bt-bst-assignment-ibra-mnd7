@@ -156,11 +156,15 @@ public class BST<T> {
     
     
 	public int countNodesIn(int k) {
-		 BSTNode<T> p =root;   
-		 int counter=0;
+		 BSTNode<T> p =root;  
+		 
+		int counter=1;
 		 int left=0;
 		 int right=0;
-		
+		 
+		if(p==null) {
+			return 0;
+		}
 		while(p.key!=k) {
 			
 			if(k<p.key) {
@@ -168,22 +172,33 @@ public class BST<T> {
 			}
 			else
 				p=p.right;
+			
+			if(p==null) {
+				return 0;
+			}
+			
 		}
 		
 		
 		if(p.left!=null) {
-			p=p.left;
-		 left=countNodesIn(p.key);
-		            counter++;}
+			
+		
+		 left=countNodesIn(p.left.key);
+		 
+		            }
 		
 		
 		if(p.right!=null) {
-			p=p.right;
-			 right=countNodesIn(p.key);
-			            counter++;}
+			
+			 right=countNodesIn(p.right.key);
+			            }
+		
+		if(p==null) {
+			return 0;
+		}
 		
 		
-		return counter;
+		return counter+left+right;
 		
 		
 		
